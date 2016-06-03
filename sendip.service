@@ -1,0 +1,9 @@
+[Unit]
+Description=Send IPs to DNS server
+
+[Service]
+Type=simple
+ExecStart=/opt/sendip
+
+[Install]
+WantedBy=multi-user.target

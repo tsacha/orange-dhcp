@@ -1,0 +1,19 @@
+option rfc3118-authentication code 90 = string;
+option rfc3442-classless-static-routes code 121 = array of unsigned integer 8;
+interface "data" {
+    send vendor-class-identifier "sagem";
+    send dhcp-client-identifier 1:68:15:90:25:1B:58;
+    send user-class "+FSVDSL_livebox.Internet.softathome.Livebox3";
+    send rfc3118-authentication 00:00:00:00:00:00:00:00:00:00:00:66:xx:xx.xx:xx:xx:xx:xx:xx:xx:xx;
+    request subnet-mask, routers, domain-name-servers,
+      domain-name, broadcast-address, dhcp-lease-time,
+      dhcp-renewal-time, dhcp-rebinding-time,
+      rfc3118-authentication;
+}
+
+interface "tv" {
+    send vendor-class-identifier "sagem";
+    send dhcp-client-identifier 1:xx:xx:xx:xx:xx:xx;
+    send user-class "\047FSVDSL_livebox.MLTV.softathome.Livebox3";
+    request subnet-mask, routers, ntp-servers, www-server, rfc3442-classless-static-routes;
+}

@@ -1,0 +1,10 @@
+quickleave
+
+phyint data downstream ratelimit 0 threshold 1
+altnet 10.2.0.0/16
+
+phyint vod upstream ratelimit 0 threshold 1
+altnet 193.0.0.0/8
+altnet 81.0.0.0/8
+altnet 172.0.0.0/8
+altnet 80.0.0.0/8

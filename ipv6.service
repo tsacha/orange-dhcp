@@ -1,0 +1,9 @@
+[Unit]
+Description=Getting public ipv6 prefix
+
+[Service]
+ExecStart=/usr/sbin/dibbler-client run
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

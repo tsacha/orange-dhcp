@@ -1,0 +1,9 @@
+[Unit]
+Description=Send IP to DNS servers every minutes
+
+[Timer]
+OnBootSec=60
+OnUnitActiveSec=1min
+
+[Install]
+WantedBy=timers.target

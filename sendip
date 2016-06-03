@@ -1,0 +1,5 @@
+#!/bin/bash
+ssh s1 -C "echo -n $(ip a | grep 'dynamic data' | awk '{ print $2 }' | awk -F '/' '{ print $1}') > /var/lib/lxc/salt/rootfs/opt/ips/ipsrv.txt"
+#ssh s1 -C "echo -n $(ip -6 a | grep enp1s0f1 -A1 | grep 'scope global' | awk '{ print $2 }' | awk -F '/' '{ print $1 }') > /var/lib/lxc/salt/rootfs/opt/ips/ip6srv.txt"
+ssh s1 -C "echo -n $(cat /opt/prefix6) > /var/lib/lxc/salt/rootfs/opt/ips/prefix6srv.txt"
+ssh s1 -C "echo -n $(cat /opt/prefix6) > /var/lib/lxc/salt/rootfs/opt/ips/ip6srv.txt"

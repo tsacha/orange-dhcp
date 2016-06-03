@@ -1,0 +1,9 @@
+[Unit]
+Description=Forwarding multicast connections to TV
+
+[Service]
+ExecStart=/usr/local/sbin/igmpproxy -d -v /opt/igmp
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

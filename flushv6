@@ -1,0 +1,20 @@
+#!/bin/bash
+mac_to_ipv6() {
+    local IFACE="$1"
+    local HWADDR=$(ip l show dev $1 | grep ether | awk '{print $2}')
+    local -a OCTETS
+    local IPV6ADDR
+
+    if [[ -z "$IFACE" ]]; then
+	IFACE=$(ip route | grep ^default | sed 's/^.* dev //')
+    fi
+    OCTETS=( ${HWADDR//:/\ } )
+    OCTETS[0]=$(printf %02x $((16#${OCTETS[0]}+0x02)))
+    IPV6ADDR="fe80::${OCTETS[0]}${OCTETS[1]}:${OCTETS[2]}ff:fe${OCTETS[3]}:${OCTETS[4]}${OCTETS[5]}/64"
+    echo "$IPV6ADDR"
+}
+
+ip -6 route flush default
+ip -6 route flush dev $1
+ip -6 addr flush dev $1
+ip -6 addr add $(mac_to_ipv6 $1) dev $1

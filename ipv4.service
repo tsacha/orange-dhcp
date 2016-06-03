@@ -1,0 +1,9 @@
+[Unit]
+Description=Getting public ipv4 address
+
+[Service]
+ExecStart=/usr/sbin/dhclient -4 -d -cf /opt/ipv4
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
